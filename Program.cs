@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using project312.modules;
-
 namespace project312
 {
     public class Program
@@ -26,7 +21,7 @@ namespace project312
                 if (arg == "mode=container")
                 {
                     Settings.PostgresHost = "the-postgres";
-                    Settings.PostgresPassword = "password"; // för att docker-compose inte fixar $ tecken ... den verkar bryta där?
+                    Settings.PostgresPassword = "password"; 
                 }
 
             }
