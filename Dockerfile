@@ -3,6 +3,9 @@ FROM microsoft/dotnet:latest
 COPY . /app
 WORKDIR /app
 
+RUN chmod -R 777 /app
+RUN chmod -R 777 /tmp
+
 RUN dotnet restore
 RUN dotnet build
 
