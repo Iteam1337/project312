@@ -11,6 +11,9 @@ RUN dotnet build
 
 ENV ASPNETCORE_URLS http://*:5000
 
+RUN chmod -R 777 /app
+RUN chmod -R 777 /tmp
+
 EXPOSE 5000
 CMD ["dotnet", "run", "--server.urls", "http://0.0.0.0:5000", "mode=container"]
 
