@@ -26,7 +26,7 @@ namespace project312
 
             }
             
-            System.Threading.Thread.Sleep(15000);
+            System.Threading.Thread.Sleep(5000);
             Settings.ConnectionString = "Host=" + Settings.PostgresHost + ";Username=subs_user;Password=531h4Kb%6$y9;Database=" + Settings.DatabaseName; // this should be done somewhere else later on
             DatabaseInitializer.initDatabase();
             host.Run();
