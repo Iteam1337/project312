@@ -20,7 +20,7 @@ namespace project312
             {
                 if (arg == "mode=container")
                 {
-                    Settings.PostgresHost = "the-postgres";
+                    Settings.PostgresHost = "the-postgres:30542";
                     Settings.PostgresPassword = "password"; 
                 }
 
