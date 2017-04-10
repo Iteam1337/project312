@@ -1,11 +1,15 @@
-FROM microsoft/dotnet:1.1-sdk
+FROM microsoft/dotnet:latest
+
+COPY . /app
+
 WORKDIR /app
 
-# copy csproj and restore as distinct layers
-COPY project312.csproj .
-RUN dotnet restore
+RUN ["dotnet", "restore"]
 
-# copy and build everything else
-COPY . .
-RUN dotnet publish -c Release -o out
-ENTRYPOINT ["dotnet", "/app/bin/Release/netcoreapp1.0/project312.dll"]
+RUN ["dotnet", "build"]
+
+EXPOSE 5000
+
+ENV ASPNETCORE_URLS http://*:5000
+
+CMD ["dotnet", "run", "--server.urls", "http://0.0.0.0:5000", "mode=container"]
