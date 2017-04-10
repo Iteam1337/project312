@@ -6,8 +6,6 @@ services:
       - "5000:5000"
     depends_on:
      - the-postgres
-    links:
-     - the-postgres
   the-postgres:
     image: postgres
     ports:
