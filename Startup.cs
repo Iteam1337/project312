@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-
+using project312.modules;
 
 namespace project312
 {
@@ -18,6 +18,7 @@ namespace project312
         public void ConfigureServices(IServiceCollection services)
         {
               services.AddMvc();
+              services.AddTransient<IDatabaseAccess, DatabaseAccess>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
