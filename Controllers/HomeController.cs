@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using project312.Models;
 using project312.modules;
 
 namespace project312.Controllers
@@ -10,11 +9,9 @@ namespace project312.Controllers
     public class HomeController : Controller
     {
         IDatabaseAccess databaseAccess;
-
         public HomeController(IDatabaseAccess injectedDatabaseAccess) {
             databaseAccess = injectedDatabaseAccess;
         }
-
         public IActionResult Index()
         {
             return View();
@@ -24,11 +21,19 @@ namespace project312.Controllers
         {
             return View();
         }
-
-        public JsonResult InsertSubscriber()
+        
+        [HttpPost]
+        public JsonResult InsertSubscriber([FromBody] Subscriber subscriber)
         {
-           databaseAccess.AddSubscriber("hellgrenj@gmail.com", "johan");
-           return Json(new { message = "Hello test"});
+            if (ModelState.IsValid)
+            {
+                databaseAccess.AddSubscriber(subscriber);
+                return Json(new { message = subscriber.Name + " was created successfully!"});
+            }
+            else
+            {
+                return Json(ModelState);
+            }
         }
     }
 }

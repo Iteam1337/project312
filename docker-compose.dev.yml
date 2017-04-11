@@ -1,11 +1,5 @@
 version: '2'
 services:
-  backend-service:
-    build: .
-    ports:
-      - "5000:5000"
-    depends_on:
-     - the-postgres
   the-postgres:
     image: postgres
     ports:
