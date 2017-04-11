@@ -21,6 +21,7 @@ namespace project312.Controllers
             List<String> strList = new List<String>();
             strList.Add("hej");
             strList.Add("då");
+            strList.Add("ju!");
             foreach(var s in strList) {
                 Console.WriteLine(s);
             }

@@ -21,9 +21,9 @@ namespace project312
                 if (arg == "mode=container")
                 {
                     Settings.PostgresHost = "the-postgres";
+                    System.Threading.Thread.Sleep(2000);
                 }
             } 
-            System.Threading.Thread.Sleep(2000);
             Settings.ConnectionString = "Host=" + Settings.PostgresHost + ";Username=subs_user;Password=531h4Kb%6$y9;Database=" + Settings.DatabaseName; // this should be done somewhere else later on
             DatabaseInitializer.initDatabase();
             host.Run();
