@@ -20,8 +20,15 @@ namespace project312.Controllers
         [HttpPost]
         public JsonResult InsertSubscriber([FromBody] Subscriber subscriber)
         {
-            databaseAccess.AddSubscriber(subscriber);
-            return Json(new { message = subscriber.Name + " was created successfully!"});
+            if (ModelState.IsValid)
+            {
+                databaseAccess.AddSubscriber(subscriber);
+                return Json(new { message = subscriber.Name + " was created successfully!"});
+            }
+            else
+            {
+                return Json(ModelState);
+            }
         }
     }
 }
