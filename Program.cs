@@ -15,18 +15,15 @@ namespace project312
                 .Build();
 
             Settings.PostgresHost = "127.0.0.1";
-            Settings.PostgresPassword = "o768lLr$a1v8"; 
+            Settings.PostgresPassword = "password";
             foreach (var arg in args)
             {
                 if (arg == "mode=container")
                 {
                     Settings.PostgresHost = "the-postgres";
-                    Settings.PostgresPassword = "password"; 
                 }
-
-            }
-            
-            System.Threading.Thread.Sleep(5000);
+            } 
+            System.Threading.Thread.Sleep(2000);
             Settings.ConnectionString = "Host=" + Settings.PostgresHost + ";Username=subs_user;Password=531h4Kb%6$y9;Database=" + Settings.DatabaseName; // this should be done somewhere else later on
             DatabaseInitializer.initDatabase();
             host.Run();
