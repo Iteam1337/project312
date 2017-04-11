@@ -1,11 +1,12 @@
 using System;
 using Npgsql;
+using project312.Models;
 
 namespace project312.modules
 {
     public class DatabaseAccess : IDatabaseAccess
     {
-        public void AddSubscriber(string email, string name)
+        public void AddSubscriber(Subscriber subscriber)
         {
             using (var conn = new NpgsqlConnection(Settings.ConnectionString))
             {
@@ -19,8 +20,8 @@ namespace project312.modules
                         cmd.Parameters.Add(new NpgsqlParameter("name", NpgsqlTypes.NpgsqlDbType.Varchar));
                         cmd.Prepare();
 
-                        cmd.Parameters[0].Value = email;
-                        cmd.Parameters[1].Value = name;
+                        cmd.Parameters[0].Value = subscriber.Email;
+                        cmd.Parameters[1].Value = subscriber.Name;
                         cmd.ExecuteNonQuery();
                     }
                     tx.Commit();
