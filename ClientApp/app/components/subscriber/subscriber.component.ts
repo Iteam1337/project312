@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Http } from '@angular/http';
+import { Component } from '@angular/core'
+import { Http } from '@angular/http'
+import { Router } from '@angular/router'
 
 @Component({
     selector: 'subscriber',
@@ -10,19 +11,17 @@ export class SubscriberComponent {
     subscriber = {
         email: '',
         name: ''
-    };
-
-    onSubmit () { 
-        alert('hello');
-        this.submitted = true; 
     }
 
     public submit() {
         this
             .http
             .post('http://localhost:5000/home/insertsubscriber', this.subscriber)
-        .subscribe(result => console.log(result))
+            .subscribe(result => this.router.navigate(['fetch-data']))
     }
 
-    constructor(private http: Http) {}
+    constructor(
+        private http: Http,
+        private router: Router
+    ) { }
 }
