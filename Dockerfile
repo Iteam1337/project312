@@ -1,27 +1,19 @@
 FROM microsoft/dotnet:latest
 
+#RUN apt-get update
+#RUN apt-get install -y build-essential
+
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
+RUN apt-get install -y nodejs
+
 COPY . /app
 WORKDIR /app
 
-RUN chmod -R 777 /app
-RUN chmod -R 777 /tmp
-
 RUN dotnet restore
 RUN dotnet build
+RUN dotnet publish
 
 ENV ASPNETCORE_URLS http://*:5000
 
-RUN chmod -R 777 /app
-RUN chmod -R 777 /tmp
-
 EXPOSE 5000
 CMD ["dotnet", "run", "--server.urls", "http://0.0.0.0:5000", "mode=container"]
-
-#RUN mkdir -p /app/obj/Debug/netcoreapp1.0
-#RUN touch /app/obj/Debug/netcoreapp1.0/CoreCompileInputs.cache
-
-#RUN mkdir -p /app/obj/Debug/netcoreapp1.0
-#RUN touch /app/obj/Debug/netcoreapp1.0/project312.csproj.FileListAbsolute.txt
-
-#RUN chmod -R 777 /app
-#RUN chmod -R 777 /tmp
