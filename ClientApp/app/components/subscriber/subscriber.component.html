@@ -1,0 +1,14 @@
+<div class="container">
+    <h1>Subscriber</h1>
+    <form (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" name="email" required [(ngModel)]="subscriber.email">
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="subscriber.name">
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
