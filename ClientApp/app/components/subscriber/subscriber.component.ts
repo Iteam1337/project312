@@ -16,7 +16,7 @@ export class SubscriberComponent {
     public submit() {
         this
             .http
-            .post('http://localhost:5000/home/insertsubscriber', this.subscriber)
+            .post('/home/insertsubscriber', this.subscriber)
             .subscribe(result => this.router.navigate(['fetch-data']))
     }
 
