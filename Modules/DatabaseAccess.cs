@@ -1,6 +1,7 @@
 using System;
 using Npgsql;
 using project312.Models;
+using System.Collections.Generic;
 
 namespace project312.modules
 {
@@ -32,6 +33,39 @@ namespace project312.modules
                     throw new Exception("Error");
                 }
             }
+        }
+
+        public List<Subscriber> GetSubscribers() {
+            var subscribers = new List<Subscriber>();
+            using (var conn = new NpgsqlConnection(Settings.ConnectionString))
+            {
+                conn.Open();
+                try
+                {
+                    using (var cmd = new NpgsqlCommand("SELECT * FROM subscribers", conn))
+                    {
+                        using (NpgsqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            // Output rows
+                            while (dr.Read())
+                                subscribers.Add(new Subscriber {
+                                    Id = (int) dr[0],
+                                    Email = (string) dr[1],
+                                    Name = (string) dr[2]
+                                });
+
+                            conn.Close();
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    throw new Exception("Error");
+                }
+            }
+
+            return subscribers;
         }
     }
 }

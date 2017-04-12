@@ -35,5 +35,10 @@ namespace project312.Controllers
                 return Json(ModelState);
             }
         }
+
+        [HttpGet]
+        public JsonResult GetSubscribers() {
+            return Json(databaseAccess.GetSubscribers());
+        }
     }
 }
