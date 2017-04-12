@@ -12,9 +12,14 @@ namespace project312.Controllers
         public HomeController(IDatabaseAccess injectedDatabaseAccess) {
             databaseAccess = injectedDatabaseAccess;
         }
-        public JsonResult Index()
+        public IActionResult Index()
         {
-            return Json(new { message = "Hello Worlds"});
+            return View();
+        }
+
+        public IActionResult Error()
+        {
+            return View();
         }
         
         [HttpPost]
