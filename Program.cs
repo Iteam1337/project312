@@ -20,7 +20,7 @@ namespace project312
             {
                 if (arg == "mode=container")
                 {
-                    Settings.PostgresHost = "the-postgres";
+                    Settings.PostgresHost = "172.17.0.1:30342";
                     System.Threading.Thread.Sleep(2000);
                 }
             } 
