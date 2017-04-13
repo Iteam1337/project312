@@ -6,6 +6,8 @@ services:
       - "5000:5000"
     depends_on:
      - the-postgres
+    environment:
+      - POSTGRES_HOST=the-postgres
   the-postgres:
     image: postgres
     ports:

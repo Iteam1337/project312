@@ -8,7 +8,8 @@ namespace project312.modules
         public static void initDatabase()
         {
             bool dbExists = false;
-            using (var conn = new NpgsqlConnection("Host=" + Settings.PostgresHost + ";Username=admin;Password=" + Settings.PostgresPassword + ";Database=postgres;"))
+            var adminConnectionString = "Host=" + Settings.PostgresHost + ";Username=admin;Password=" + Settings.PostgresPassword + ";Database=postgres;";
+            using (var conn = new NpgsqlConnection(adminConnectionString))
             {
 
                 conn.Open();
